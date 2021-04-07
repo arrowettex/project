@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="profileUpdateForm">
+    <ion-list>
+        <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="text" required="" formControlName="name" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder="" readonly></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.name">
+          <div class="error-message" *ngIf="profileUpdateForm.get('name').hasError(error.type) && (profileUpdateForm.get('name').dirty || profileUpdateForm.get('name').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input type="text" required="" formControlName="phone_number" (ionInput)="inputPhone($event)" maxlength="{{ phoneLength }}" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder="" readonly></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.phone_number">
+          <div class="error-message" *ngIf="profileUpdateForm.get('phone_number').hasError(error.type) && (profileUpdateForm.get('phone_number').dirty || profileUpdateForm.get('phone_number').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" required="" formControlName="city" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder="" readonly></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.city">
+          <div class="error-message" *ngIf="profileUpdateForm.get('city').hasError(error.type) && (profileUpdateForm.get('city').dirty || profileUpdateForm.get('city').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item routerLink="/change-password">
+          <ion-label position="floating">Change Password</ion-label>
+          <ion-input routerLink="/change-password" type="text"   spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder="**********" readonly></ion-input>
+        </ion-item>
+
+    </ion-list>
+    <ion-button expand="full" type="button" class="signup-btn" shape="round" (click)="updateProfileDetails()"
+         [disabled]="!profileUpdateForm.valid">Update Profile</ion-button>
+  </form>
+</ion-content>

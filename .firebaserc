@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jobflex-56143": {
+      "hosting": {
+        "app": [
+          "jobflex-56143"
+        ]
+      }
+    }
+  }
+}

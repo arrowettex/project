@@ -1,0 +1,8 @@
+{
+  "name": "Jobflex",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

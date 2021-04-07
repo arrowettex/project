@@ -1,0 +1,92 @@
+<ion-app>
+
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-content>
+      
+      <div class="menu-header-bg"></div>
+
+      <!-- DP -->
+      <div class="header-content"> 
+        <img src="../assets/img/1.JPG" alt="placeholder">
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col offset-4>
+                    <div class="text">{{ name }}</div>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row>
+                  <ion-col>
+                    <div class="text1">{{ email }}</div>
+                  </ion-col>
+                  <ion-col offset-4>
+                    <ion-menu-toggle>
+                      <ion-icon (click)="goToProfile()" class="icon" name="pencil-sharp"></ion-icon> 
+                    </ion-menu-toggle>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+      </div>
+
+      <!-- CHANGE TO 
+      <div class="action-button">
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>Hindi ko pa sure
+        </ion-button>
+      </div> -->
+
+      <ion-list class="menu-items" lines="none">
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/home">
+            <ion-icon name="home-outline"></ion-icon>Dashboard
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/services">
+            <ion-icon name="build-outline"></ion-icon>Services
+          </ion-item>     
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/locations">
+            <ion-icon name="navigate-outline"></ion-icon>Locations
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/partner">
+            <ion-icon name="people-outline"></ion-icon>Be a Partner
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/help">
+            <ion-icon name="Help-outline"></ion-icon>Help
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/policy">
+            <ion-icon name="document-outline"></ion-icon>Legal & Policies
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item (click)="logout()">
+            <ion-icon name="exit-outline"></ion-icon>Logout
+          </ion-item>
+        </ion-menu-toggle>
+
+
+      </ion-list>
+
+
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

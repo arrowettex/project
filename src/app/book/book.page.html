@@ -1,0 +1,150 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/home"></ion-back-button>
+		</ion-buttons>
+		
+    <ion-title>
+      Enter User Details
+		</ion-title>
+		
+  </ion-toolbar>
+</ion-header>
+<ion-content> 
+
+  <div class="ion-padding">
+		Select a Date
+		<li-ionic4-datepicker [(ngModel)]= "myDate"
+		[inputDateConfig]="datePickerObj"></li-ionic4-datepicker>
+  </div>
+  
+    <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Name</ion-label>
+				<ion-input placeholder="" required="" formControlName="name" type="text"></ion-input>
+      </ion-item>
+
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type="email"> </ion-input>
+      </ion-item>
+
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.email.errors?.pattern">
+        Please provide valid email id.
+      </span>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Address</ion-label>
+        <ion-input formControlName="address" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Mobile</ion-label>
+        <ion-input maxlength="10" formControlName="mobile" type="text" required></ion-input>
+      </ion-item>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.required">
+        Mobile number is required.
+      </span>
+      <span class="error ion-padding" *ngIf="isSubmitted && errorControl.mobile.errors?.pattern">
+        Only numerical values allowed.
+			</span>
+			
+
+			
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" expand="block">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+
+
+
+  <!-- <div class="ion-padding">
+    <form [formGroup]="bookForm" (ngSubmit)="submit()">
+      <ion-list>
+        <ion-item>
+          <ion-label>Select a Company</ion-label>
+          <ion-select ok-text="Okay" cancel-text="Nah">
+            <ion-select-option value="dos">EasyPC</ion-select-option>
+            <ion-select-option value="lunix">Mapua</ion-select-option>
+            <ion-select-option value="mac7">Makati</ion-select-option>
+            <ion-select-option value="mac8">Mac OS 8</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input autocapitalize inputmode="text" formControlName="name"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.name">
+          <ng-container *ngIf="name.hasError(error.type) && (name.dirty || name.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Phone</ion-label>
+          <ion-input inputmode="tel" formControlName="phone"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.phone">
+          <ng-container *ngIf="phone.hasError(error.type) && (phone.dirty || phone.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input inputmode="email" formControlName="email"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.email">
+          <ng-container *ngIf="email.hasError(error.type) && (email.dirty || email.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+      </ion-list>
+      <ion-list formGroupName="address">
+        <ion-list-header>
+          <ion-label>Address</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-label position="floating">Street</ion-label>
+          <ion-input formControlName="street"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.street">
+          <ng-container *ngIf="street.hasError(error.type) && (street.dirty || street.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input formControlName="city"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.city">
+          <ng-container *ngIf="city.hasError(error.type) && (city.dirty || city.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Zip Code</ion-label>
+          <ion-input formControlName="zip"></ion-input>
+        </ion-item>
+        <div *ngFor="let error of errorMessages.zip">
+          <ng-container *ngIf="zip.hasError(error.type) && (zip.dirty || zip.touched)">
+            <small class="error-message">{{error.message}}</small>
+          </ng-container>
+        </div> -->
+      <!-- </ion-list>
+      <ion-button [disabled]="!bookForm.valid" type="submit" expand="block">Submit <ion-icon slot="end"
+          name="next">
+        </ion-icon>
+      </ion-button> -->
+      <!-- <ion-button routerLink="/calendar">Submit <ion-icon slot="end"
+        name="next">
+      </ion-icon>
+    </ion-button> -->
+    <!-- </form>
+  </div> -->
+</ion-content>

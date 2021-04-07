@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="signUpForm">
+    <ion-list [hidden]="submitProfileDetails">
+
+        <ion-item>
+            <ion-label position="floating">Email Address</ion-label>
+            <ion-input type="email" required="" formControlName="email_address" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder=""></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.email_address">
+          <div class="error-message" *ngIf="signUpForm.get('email_address').hasError(error.type) && (signUpForm.get('email_address').dirty || signUpForm.get('email_address').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" required="" formControlName="password" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" maxlength="30" placeholder=""></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.password">
+          <div class="error-message" *ngIf="signUpForm.get('password').hasError(error.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+    </ion-list>
+
+    <ion-list *ngIf="submitProfileDetails">
+
+        <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="text" required="" formControlName="name" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder=""></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.name">
+          <div class="error-message" *ngIf="signUpForm.get('name').hasError(error.type) && (signUpForm.get('name').dirty || signUpForm.get('name').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input type="text" required="" formControlName="phone_number" (ionInput)="inputPhone($event)" maxlength="{{ phoneLength }}" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder="(+63)"></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.phone_number">
+          <div class="error-message" *ngIf="signUpForm.get('phone_number').hasError(error.type) && (signUpForm.get('phone_number').dirty || signUpForm.get('phone_number').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+
+        <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" required="" formControlName="city" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder=""></ion-input>
+        </ion-item>
+
+        <ng-container *ngFor="let error of errorMessages.city">
+          <div class="error-message" *ngIf="signUpForm.get('city').hasError(error.type) && (signUpForm.get('city').dirty || signUpForm.get('city').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+        
+    </ion-list>
+    <ion-button *ngIf="!submitProfileDetails" class="signup-btn" type="button" expand="block" (click)="validEmailPassword()" 
+        [disabled]="!signUpForm.valid"> Next </ion-button>
+    <ion-button *ngIf="submitProfileDetails" expand="full" type="button" class="signup-btn" shape="round" (click)="signUpUser()"
+         [disabled]="!signUpForm.valid">Create Account</ion-button>
+  </form>
+</ion-content>

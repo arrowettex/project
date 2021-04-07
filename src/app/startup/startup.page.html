@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-text>
+    <h1>Welcome</h1>
+    <p>Get starter by logging into <br> your account.</p>
+  </ion-text>
+
+  <div class="actions">
+    
+    <ion-button class="signup-btn" (click)="loginUser()" expand="block">Sign in to continue</ion-button>
+
+    <div class="separator">
+      <span>or</span>
+      <span class="line left"></span>
+      <span class="line right"></span>
+    </div>
+
+    <div class="login-buttons">
+      <ion-button class="signup-btn" (click)="goTosignUp()" expand="block">Create an Account</ion-button>
+    </div>
+
+    <h6  class="login" (click)="goToReset()" >Forgot your Password? <a>Reset now</a></h6>
+
+  </div>
+
+</ion-content>

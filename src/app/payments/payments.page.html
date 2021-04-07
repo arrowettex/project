@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment Methods</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-radio-group value="biff" color="primary">
+      <ion-list-header>
+        <ion-label>Choose method of Payment</ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label>Paypal</ion-label>
+        <ion-radio slot="start" value="paypal"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>ATM</ion-label>
+        <ion-radio slot="start" value="atm"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>G-Cash</ion-label>
+        <ion-radio slot="start" value="gcash"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Cash on Delivery</ion-label>
+        <ion-radio slot="start" value="cash on delivery"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-button (click)="presentAlert()" expand="block">Confirm</ion-button>
+  </ion-list>
+</ion-content>

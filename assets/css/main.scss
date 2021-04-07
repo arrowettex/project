@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,700");
+@import "../css/themes";
+
+
+
+@function color($cname){
+    @return map-get($colors, $cname);
+}
+
+//variable declarations------------------------------------
+$secdiv: 200px;
+
+$topnavh: 50px;
+$mainheight: calc(100vh - $topnavh);
+$mainheadh: 75px;
+
+$cardh: calc($mainheight - $mainheadh);
+$cardheadh: 60px;
+$tblcardh: calc($cardh - $cardheadh);
+
+$cardpad: 0.75rem;
+
+$bodymar: 1rem;
+
+$userimg: 150px;
+
+//end of declarations--------------------------------------
+
+
+*{
+    box-sizing: border-box;
+}
+
+body,html {
+    overflow: hidden  !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+h1,h2,h3{
+    font-weight: 700;
+}
+
+h4,h5,h6{
+    font-weight: 500;
+}
+
+
+
+body{
+    background-color: color(twhite);
+    font-family: 'Century Gothic', 'Poppins', 'Futura', 'Helvetica Neue', 'Roboto', sans-serif !important;
+    font-size: 14px !important;  
+    height: 100vh;
+    width: 100vw;
+}
+
+//Background color selectors
+
+.bgdgrey{
+    background-color: color(dgrey);
+}
+
+.bggrey{
+    background-color: color(tgrey) !important;
+}
+
+.bglgrey{
+    background-color: color(lgrey) !important;
+}
+
+.bgwhite{
+    background-color: color(twhite) !important;
+}
+
+.bgpri{
+    background-color: color(primary);
+}
+
+.bgaccent{
+    background-color: color(accent);
+}
+
+//----Override font weights
+
+.regular{
+    font-weight: 500 !important;
+}
+
+.bold{
+    font-weight: 700 !important;
+}
+
+//---------Utilitiees----------
+
+.scrollablex{
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+}
+
+.scrollabley{
+    overflow-x: hidden;
+    overflow-y: scroll !important;
+}
+
+.scrollable{
+    overflow-x: scroll !important;
+    overflow-y: scroll !important;
+}
+
+.noscroll{
+    overflow: hidden;
+}
+
+.blk{
+    display: block;
+}
+
+.bodypad{
+    padding: 30px;
+}
+
+.bodymar{
+    margin: $bodymar;
+}
+
+.center{
+    display: block;
+    text-align: center;
+}
+
+.fullheight{
+    height: 100%;
+} 
+    
+
+//---------flex----------
+
+.flexparent{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+
+th, td{
+    //text-align: right !important;
+    
+    font-size: 1.2em; 
+}
+
+th{
+    font-weight: 700;
+    color: color(dgrey) !important;
+}
+
+td{
+    font-weight: 500;
+}
+
+.flexchild{
+    flex: 1 1 0%;
+}
+
+a{
+    text-decoration: none !important;
+    color: #ffffff;
+
+    .button &{
+        color: #ffffff !important;
+    }
+}
+
+
+
+
+//top nav------------------------
+.navbar-item{
+    display: fixed;
+    background-color: color(lgrey);
+    left: 0;
+    right: 0;
+    height: $topnavh;
+    padding: 1em;
+    
+    a{
+        text-decoration: none;
+        color: color(dgrey);
+        transition: all 0.2 ease-in-out;
+        font-weight: 700;
+    
+        &:hover{
+            color: color(primary);
+        }
+    }
+}
+
+.navbar{
+    padding: 0 0.75em 0 0.75em;
+    font-size: 14px !important;
+    position: fixed !important;
+    left: 0;
+    right: 0;
+    height: $topnavh;
+}
+
+//section specific scss
+.sidenav{
+    background-color: color(dgrey);
+    width: $secdiv;
+    position: fixed;
+    top: 0;
+    bottom: 0%;
+    text-decoration: none;
+    z-index: 3;
+    margin-top: $topnavh;
+
+    .userarea{
+        padding: 20px;
+
+        .img{
+            border-radius: 50%;
+            background-color: color(tgrey);
+            width: $userimg;
+            height: $userimg;
+            overflow: hidden;
+        }
+ 
+        .details{
+            padding-top: 1em;
+
+            #username{
+                font-weight: 700;
+                font-size: 1.2em;
+                color: color(twhite) !important;
+            }
+            #userpos{
+                font-size: 1em;
+                color: color(lgrey) !important;
+            }
+        }   
+    }
+
+
+    a{
+        display: block;
+        font-weight: 700;
+        font-size: 1.2em;
+        color: color(twhite);
+        padding: 5px 20px 5px 20px;
+        transition: all 0.1s ease-in-out;
+
+        &:hover{    
+            color: color(accent);
+        }
+
+        &.danger:hover{
+            color: color(tred) !important;
+        }
+
+        &.warn:hover{
+            color: color(warn) !important;
+        }
+
+        &.categ1:hover{
+            color: color(secondary) !important; 
+        }
+
+        &.categ2:hover{
+            color: color(primary) !important; 
+        }
+
+        &.categ3:hover{
+            color: color(primabold) !important; 
+
+           
+        }
+
+        
+
+        &.active{
+            background-color: color(twhite);
+            color: color(dgrey);
+        } 
+        
+    }
+
+    
+    h1, h2, h3, h4, h5, h6{
+        color: color(tgrey);
+        font-weight: 300;
+        margin: 1em 1em 0.5em 1em;
+    }
+}
+
+.main{
+    margin-top: $topnavh;
+    margin-left: $secdiv;
+    height: $mainheight;
+    z-index: 1;
+    transition: all 0.5s ease-in-out; 
+    
+    .header{
+    padding: $cardpad;
+    width: 100%;
+    z-index: 1; 
+    color: color(tgrey);
+    height: $mainheadh;
+    }
+}
+
+//----------------Card structure-------------
+.card{
+    background-color: color(lgrey) !important;
+    overflow: hidden;
+    .header{
+        padding: $cardpad;
+        width: 100%;
+        z-index: 1;
+        background-color: color(tgrey); 
+        color: color(twhite);  
+        height: $cardheadh !important;  
+    }
+
+    .cont{
+        padding: $cardpad;
+        color: color(tgrey);
+    }
+
+    
+ 
+}
+
+.table{
+    color: color(tgrey) !important;
+    background: color(lgrey) !important;
+    
+
+    thead th{
+        color: color(tgrey) !important;
+    }
+
+    &.is-scrollable{
+        tbody{
+            overflow-y: scroll !important;
+        }
+    }
+}

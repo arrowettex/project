@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="loginForm">
+    <ion-list>
+        <ion-item>
+            <ion-label position="floating">Email Address</ion-label>
+            <ion-input type="email" required="" formControlName="email_address" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" placeholder=""></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let error of errorMessages.email_address">
+          <div class="error-message" *ngIf="loginForm.get('email_address').hasError(error.type) && (loginForm.get('email_address').dirty || loginForm.get('email_address').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+        <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" required="" formControlName="password" spellcheck="false" autocomplete="off" autocapitalize="off" class="ion-text-left" maxlength="30" placeholder=" "></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let error of errorMessages.password">
+          <div class="error-message" *ngIf="loginForm.get('password').hasError(error.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ error.message }}
+          </div>
+        </ng-container>
+    </ion-list>
+    <ion-button expand="full" class="signup-btn" shape="round" [disabled]="!loginForm.valid" (click)="loginUser()">Login</ion-button>
+  </form>
+</ion-content>
